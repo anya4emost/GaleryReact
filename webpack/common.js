@@ -50,17 +50,13 @@ module.exports = {
         }),*/
         new HtmlWebpackPlugin({
             template: './src/index.html'
-        })/*,
+        }),
         new CopyWebpackPlugin([
             {
                 from: './src/images',
                 to: './images'
-            },
-            {
-                from: './src/content.json',
-                to: '.'
             }
-        ])*/
+        ])
     ],
     resolve: {
         extensions: ['', '.jsx', '.js', '.css']

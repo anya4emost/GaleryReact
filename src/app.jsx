@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Page} from './components/page/PageComponent';
+import {Gallery} from './components/gallery/GalleryComponent';
 
 
 ReactDOM.render(
-    <Page/>,
+    <Gallery/>,
     document.getElementById("app")
 );
