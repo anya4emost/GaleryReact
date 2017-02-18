@@ -1,5 +1,6 @@
 import React from 'react';
 import './gallery.scss';
+import {PhotoIconsComponent} from '../photoIcons/PhotoIconsComponent';
 
 export class Gallery extends React.Component {
 
@@ -7,28 +8,31 @@ export class Gallery extends React.Component {
         super(props);
     }
 
+
     render() {
-        
-        let photoIcons = this.props.images.map(function(photo){
-          return  (<li style={{backgroundImage: `url(${photo})`}}></li>);
+
+        let photoIcons = this.props.images.map(function(photo, index) {
+            return (
+                <li style={{
+                    backgroundImage: `url(${photo})`
+                }} key={index}></li>
+            );
         });
 
         return (
             <div>
                 <div className="bigPhoto-container">
-                    <img className="arrow" src="../src/images/arrow-left.png"/>
+                    <img className="arrow" onClick={() => {
+                        this.props.switchPict(true)
+                    }} src="../src/images/arrow-left.png"/>
                     <div className="bigPhoto">
                         <img src={this.props.images[this.props.currentIndex]}/>
                     </div>
-                    <img className="arrow" src="../src/images/arrow-right.png"/>
+                    <img className="arrow" onClick={() => {
+                        this.props.switchPict(false)
+                    }} src="../src/images/arrow-right.png"/>
                 </div>
-                <div className="miniPhoto-container">
-                    <img className="arrow" src="../src/images/arrow-left.png"/>
-                    <ul>
-                        {photoIcons}
-                    </ul>
-                    <img className="arrow" src="../src/images/arrow-right.png"/>
-                </div>
+                <PhotoIconsComponent photoIcons={photoIcons}/>
             </div>
         );
     }
