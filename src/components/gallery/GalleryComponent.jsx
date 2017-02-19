@@ -11,11 +11,11 @@ export class Gallery extends React.Component {
 
     render() {
 
-        let photoIcons = this.props.images.map(function(photo, index) {
+        let photoIcons = this.props.images.map((photo, index) => {
             return (
                 <li style={{
                     backgroundImage: `url(${photo})`
-                }} key={index}></li>
+                }} key={index} onClick={() => {this.props.selectPict(index)}}></li>
             );
         });
 
@@ -32,7 +32,8 @@ export class Gallery extends React.Component {
                         this.props.switchPict(false)
                     }} src="../src/images/arrow-right.png"/>
                 </div>
-                <PhotoIconsComponent photoIcons={photoIcons}/>
+                <PhotoIconsComponent photoIcons={photoIcons}
+                selectPict={this.props.selectPict}/>
             </div>
         );
     }
