@@ -1,6 +1,5 @@
 import React from 'react';
 import {Gallery} from '../gallery/GalleryComponent';
-import {ColorPage} from '../colorPage/ColorPageComponent';
 
 export class Page extends React.Component {
     photos = [
@@ -54,7 +53,6 @@ export class Page extends React.Component {
                 canOpenPopup={this.canOpenPopup}
                 switchPict={this.switchPict}
                 selectPict={this.selectPict}/>
-                <ColorPage color={"red"}/>
             </div>
         );
     }
