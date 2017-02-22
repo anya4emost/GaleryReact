@@ -32,7 +32,7 @@ export class Gallery extends React.Component {
                         this.props.switchPict(false)
                     }} src="../src/images/arrow-right.png"/>
                 </div>
-                <PhotoIconsComponent photoIcons={photoIcons}
+                <PhotoIconsComponent photoIcons={photoIcons} images={this.props.images}
                 selectPict={this.props.selectPict}/>
             </div>
         );
