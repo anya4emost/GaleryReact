@@ -14,17 +14,17 @@ export class PhotoIconsComponent extends React.Component {
         let ulWidth = document.getElementsByClassName("icons")[0].clientWidth;
         let iconsWidth = this.props.images.length * 77;
 
-        if (param && (iconsWidth - ulWidth + this.state.translateX) / ulWidth < 1) {
+        if (!param && (iconsWidth - ulWidth + this.state.translateX) / ulWidth < 1) {
             this.setState({
                 translateX: -iconsWidth + ulWidth
             })
-        } else if (param && (iconsWidth - ulWidth + this.state.translateX) / ulWidth > 1) {
+        } else if (!param && (iconsWidth - ulWidth + this.state.translateX) / ulWidth > 1) {
             this.setState({
                 translateX: this.state.translateX - Math.floor(ulWidth / 77) * 77
             })
-        }else if (!param && -this.state.translateX < ulWidth) {
+        } else if (param && -this.state.translateX < ulWidth) {
             this.setState({translateX: 0})
-        }  else {
+        } else {
             this.setState({
                 translateX: this.state.translateX + Math.floor(ulWidth / 77) * 77
             })

@@ -11,7 +11,13 @@ export class Page extends React.Component {
         "src/images/6.jpg",
         "src/images/7.jpg",
         "src/images/8.jpg",
-        "src/images/9.jpg"
+        "src/images/9.jpg",
+        "src/images/10.jpg",
+        "src/images/11.jpg",
+        "src/images/12.jpg",
+        "src/images/13.jpg",
+        "src/images/14.jpg",
+        "src/images/15.jpg"
     ];
     slideSpeed = 3;
     canOpenPopup = false;
