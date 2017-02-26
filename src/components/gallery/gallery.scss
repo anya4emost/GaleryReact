@@ -7,9 +7,12 @@ body {
 
         .bigPhoto {
             max-height: 100vh;
+            width: 1000px;
 
             img {
                 max-height: 80vh;
+                margin-left: 50%;
+transform: translateX(-50%);
             }
         }
 
@@ -33,7 +36,7 @@ body {
         ul {
             list-style-type: none;
             padding-left: 0;
-            max-width: 500px;
+            max-width: 539px;
             width: 80%;
             overflow:hidden;
             div {

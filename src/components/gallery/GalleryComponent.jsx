@@ -33,7 +33,7 @@ export class Gallery extends React.Component {
                     }} src="../src/images/arrow-right.png"/>
                 </div>
                 <PhotoIconsComponent photoIcons={photoIcons} images={this.props.images}
-                selectPict={this.props.selectPict}/>
+                selectPict={this.props.selectPict} shiftPreview={this.props.shiftPreview} translateX={this.props.translateX}/>
             </div>
         );
     }
