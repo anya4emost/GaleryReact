@@ -26,23 +26,20 @@ export class Page extends React.Component {
         super(props);
         this.state = {
             currentIndex: 0,
-                translateX: 0
+            translateX: 0
         };
-        console.log(this.state.translateX);
     }
 
     switchPict = (arrowLeft) => {
+        let currentIndex = this.state.currentIndex;
+
         if (arrowLeft && this.state.currentIndex > 0) {
-            this.setState({
-                currentIndex: --this.state.currentIndex
-            })
-        } else if (arrowLeft && this.state.currentIndex == 0) {}
-        else if (!arrowLeft && this.state.currentIndex < this.photos.length - 1) {
-            this.setState({
-                currentIndex: ++this.state.currentIndex
-            })
-        } else {};
-        console.log(this.state.currentIndex);
+            currentIndex -= 1;
+        } else if (!arrowLeft && this.state.currentIndex < this.photos.length - 1) {
+            currentIndex += 1;
+        }
+
+        this.setState({currentIndex: currentIndex})
     };
 
     selectPict = (key) => {
@@ -50,25 +47,24 @@ export class Page extends React.Component {
     };
 
     shiftPreview = (param) => {
-        let ulWidth = document.getElementsByClassName("icons")[0].clientWidth;
-        let iconsWidth = this.photos.length * 77;
+        const thumbNailWidth = 77;
+        let ulWidth = document.getElementsByClassName("icons")[0].clientWidth,
+            iconsWidth = this.photos.length * thumbNailWidth,
+            translateX = this.state.translateX,
+            newTranslateX = translateX + Math.floor(ulWidth / thumbNailWidth) * thumbNailWidth;
 
-        if (!param && (iconsWidth - ulWidth + this.state.translateX) / ulWidth < 1) {
-            this.setState({
-                translateX: -iconsWidth + ulWidth
-            })
-        } else if (!param && (iconsWidth - ulWidth + this.state.translateX) / ulWidth > 1) {
-            this.setState({
-                translateX: this.state.translateX - Math.floor(ulWidth / 77) * 77
-            })
-        } else if (param && -this.state.translateX < ulWidth) {
-            this.setState({translateX: 0})
-        } else {
-            this.setState({
-                translateX: this.state.translateX + Math.floor(ulWidth / 77) * 77
-            })
+        if (param == 'arrow_right') {
+            newTranslateX = -this.state.currentIndex * thumbNailWidth;
+        } else if (!param) {
+            if ((iconsWidth - ulWidth + translateX) / ulWidth < 1) {
+                newTranslateX = -iconsWidth + ulWidth;
+            } else {
+                newTranslateX = translateX - Math.floor(ulWidth / thumbNailWidth) * thumbNailWidth;
+            }
+        } else if (-translateX < ulWidth) {
+            newTranslateX = 0;
         }
-        console.log(this.state.translateX)
+        this.setState({translateX: newTranslateX});
     };
 
     render() {

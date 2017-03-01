@@ -8,9 +8,7 @@ export class Gallery extends React.Component {
         super(props);
     }
 
-
     render() {
-
         let photoIcons = this.props.images.map((photo, index) => {
             return (
                 <li style={{
@@ -29,7 +27,7 @@ export class Gallery extends React.Component {
                         <img src={this.props.images[this.props.currentIndex]}/>
                     </div>
                     <img className="arrow" onClick={() => {
-                        this.props.switchPict(false)
+                        this.props.switchPict(false); this.props.shiftPreview('arrow_right')
                     }} src="../src/images/arrow-right.png"/>
                 </div>
                 <PhotoIconsComponent photoIcons={photoIcons} images={this.props.images}

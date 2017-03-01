@@ -7,10 +7,7 @@ export class PhotoIconsComponent extends React.Component {
         super(props);
     }
 
-
-
     render() {
-
         return (
             <div className="miniPhoto-container">
                 <img className="arrow" src="../src/images/arrow-left.png" onClick={() => {
